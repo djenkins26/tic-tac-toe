@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -11,7 +11,70 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
+
+
+
     <body>
-      <h1>Browser Template</h1>
+
+      <h1>Tic Tac Toe: 3 in a row!</h1>
+      <p id="message"></p>
+
+      <section>
+        <form id="sign-in-form">
+          <fieldset>
+            <legend>Sign in to play!</legend>
+            <label for="sign-in-email">Email:</label>
+            <input id="sign-in-email" type="email" name="credentials[email]" placeholder="Email">
+
+            <label for="sign-in-password">Password:</label>
+            <input id="sign-in-password" type="password" name="credentials[password]" placeholder="Password">
+            <input type="submit" value="Sign in!">
+          </fieldset>
+        </form>
+      </section>
+
+
+
+      <section>
+        <form id="sign-up-form">
+          <fieldset>
+            <legend>Don't have an account? Sign up!</legend>
+            <label for"sign-up-email">Email:</label>
+            <input id="sign-up-email" type="email" name="credentials[email]" placeholder="Email">
+
+            <label for"sign-up-password">Password:</label>
+            <input id="sign-up-password" type="password" name="credentials[password]" placeholder="Password">
+
+            <label for="sign-up-password-confirmation">Password Confirmation:</label>
+            <input id="sign-up-password-confirmation" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+
+            <input type="submit" value="Sign up!"
+          </fieldset>
+        </form>
+      </section>
+
+      <section>
+        <form id="change-password-form">
+          <fieldset>
+            <legend>Change password</legend>
+            <input type="password" name="passwords[old]" placeholder="Old Password">
+            <input type="password" name="passwords[new]" placeholder="New Password">
+
+            <input type="submit" value="Change Password">
+          </fieldset>
+        </form>
+      </section>
+
+
+      <section>
+        <form id="sign-out">
+          <fieldset>
+            <legend>Sign Out!</legend>
+            <label for="sign-out"></label>
+            <input type="submit" value="Sign-Out!">
+          </fieldset>
+        </form>
+      </section>
+
     </body>
 </html>
