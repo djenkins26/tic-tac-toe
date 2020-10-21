@@ -21,10 +21,4 @@ $(() => {
   $('#game').hide()
   $('#game-board').hide()
   $('#player').hide()
-
-  $( "#cell-index").toggle(function() {
-    alert( "Player X's turn");
-  }, function(){
-    alert( "Player O's turn");
-  })
 })

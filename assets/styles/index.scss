@@ -1,5 +1,24 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  background-color: #808080;
+}
+
+h1 {
+  text-align: center;
+  font-family: cursive;
+  color: #00ffff;
+  font-size: 60px;
+}
+
+h2 {
+  text-align: center;
+  font-family: fantasy;
+  color: #00ffff;
+}
+
+
+
 .container {
   height: 100vh;
 }
@@ -30,10 +49,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #808080;
   font-size: 15vh;
 
-  min-height: 5rem;
+  min-height: 10rem;
 
 
 }
@@ -43,5 +62,5 @@
   border-right: 1px solid black;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  background-color: white;
+  background-color: #808080;
 }

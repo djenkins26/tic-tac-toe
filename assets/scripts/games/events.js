@@ -3,8 +3,8 @@
 const getFormFields = require('./../../../lib/get-form-fields')
 const ui = require('./ui')
 const api = require('./api')
-let player = 'X'
 let over = false
+const store = require('./../store')
 
 const onStartNewGame = function (event) {
   event.preventDefault()
@@ -27,19 +27,49 @@ const onBoxClick = function (event) {
     game: {
       cell: {
         index: box.data('cell-index'),
-        value: player
+        value: store.player
       },
       over: over
     }
+
+    // const data = {
+    //   gameOver: {
+    //     cell: {
+    //       index: box.data('cell-index'),
+    //       value: store.player
+    //     },
+    //
+    //   }
+
   }
-  box.css('background', 'transparent').text(player)
+  box.css('background', 'transparent').text(store.player)
   api.updateGame(data)
 
-  .then(ui.updateGameSuccess)
-  .catch(ui.updateGameFailure)
+    .then(ui.updateGameSuccess)
+    .catch(ui.updateGameFailure)
 
-  player = player === 'O' ? 'X' : 'O'
+
 }
+// const onGameOver = function (event) {
+//   if (cell-index[0].textContent === 'X' &&
+//       cell-index[1].textContent === 'X' &&
+//       cell-index[2].textContent === 'X'
+//   ) {alert('Winner')}
+//
+//   else if (
+//     cell-index[3].textContent === 'X' &&
+//       cell-index[4].textContent === 'X' &&
+//       cell-index[5].textContent === 'X'
+//   ) { alert('Winner')}
+//   else if (
+//     cell-index[6].textContent === 'X' &&
+//       cell-index[7].textContent === 'X' &&
+//       cell-index[8].textContent === 'X'
+//   ) { alert('Winner')}
+// }
+//
+// .then(ui.updateGameSuccess)
+// .catch(ui.updateGameFailure)
 
 
 
