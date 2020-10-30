@@ -3,7 +3,6 @@
 const getFormFields = require('./../../../lib/get-form-fields')
 const ui = require('./ui')
 const api = require('./api')
-let over = false
 const store = require('./../store')
 
 const onStartNewGame = function (event) {
@@ -19,63 +18,127 @@ api.startNewGame(data)
   .catch(ui.startNewGameFailure)
 }
 
+let currentPlayer = 'X'
+
+
+const onCheckWinner = function (event) {
+  if (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[1] && store.game.cells[1] === store.game.cells[2]) {
+
+    store.game.over = true
+
+    $('#message').text('Player ' + store.game.cells[0] + ' wins!')
+  } else if (store.game.cells[3] !== '' && store.game.cells[3] === store.game.cells[4] && store.game.cells[4] === store.game.cells[5]) {
+
+    store.game.over = true
+
+    $('#message').text('Player ' + store.game.cells[3] + ' wins!')
+  } else if (store.game.cells[6] !== '' && store.game.cells[6] === store.game.cells[7] && store.game.cells[7] === store.game.cells[8]) {
+
+    store.game.over = true
+
+    $('#message').text('Player ' + store.game.cells[6] + ' wins!')
+  } else if (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[3] && store.game.cells[3] === store.game.cells[6]) {
+
+    store.game.over = true
+
+    $('#message').text('Player ' + store.game.cells[0] + ' wins!')
+  } else if (store.game.cells[1] !== '' && store.game.cells[1] === store.game.cells[4] && store.game.cells[4] === store.game.cells[7]) {
+
+    store.game.over = true
+
+    $('#message').text('Player ' + store.game.cells[1] + ' wins!')
+  } else if (store.game.cells[2] !== '' && store.game.cells[2] === store.game.cells[5] && store.game.cells[5] === store.game.cells[8]) {
+
+    store.game.over = true
+
+    $('#message').text('Player ' + store.game.cells[2] + ' wins!')
+  } else if (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[4] && store.game.cells[4] === store.game.cells[8]) {
+
+    store.game.over = true
+
+    $('#message').text('Player ' + store.game.cells[0] + ' wins!')
+  } else if (store.game.cells[2] !== '' && store.game.cells[2] === store.game.cells[4] && store.game.cells[4] === store.game.cells[6]) {
+
+    store.game.over = true
+
+    $('#message').text('Player ' + store.game.cells[2] + ' wins!')
+    // determine tie game
+  } else if (store.game.cells[0] !== '' && store.game.cells[1] !== '' && store.game.cells[2] !== '' && store.game.cells[3] !== '' && store.game.cells[4] !== '' && store.game.cells[5] !== '' && store.game.cells[6] !== '' && store.game.cells[7] !== '' && store.game.cells[8] !== '' )
+
+
+  $('#message').text('Tie game, start a new game!')
+}
+
+const onPlayNewGame = function (event) {
+  event.preventDefault()
+
+  if (!store.game.over) {
+
+  }
+
+  const form = event.target
+  const data = getFormFields(form)
+
+// clear board
+  $('.box').text('')
+
+
+
+
+  api.playNewGame(data)
+    .then(ui.playNewGameSuccess)
+    .catch(ui.playNewGameFailure)
+}
 
 const onBoxClick = function (event) {
+  event.preventDefault()
+// prevent playing after someone wins
+  if (store.game.over) {
+    return onBoxClick
+  }
+
+
+
+
   const box = $(event.target)
-  if (box.text()) return
+  box.text(currentPlayer)
+  const cellIndex = box.data('cell-index')
+
+  box.css('background', 'transparent').text(currentPlayer)
+  box.css('pointer-events', 'none')
+
   const data = {
     game: {
       cell: {
-        index: box.data('cell-index'),
-        value: store.player
+        index: cellIndex,
+        value: currentPlayer
       },
-      over: over
+      over: false
     }
-
-    // const data = {
-    //   gameOver: {
-    //     cell: {
-    //       index: box.data('cell-index'),
-    //       value: store.player
-    //     },
-    //
-    //   }
-
-  }
-  box.css('background', 'transparent').text(store.player)
-  api.updateGame(data)
+}
+api.updateGame(data)
 
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFailure)
+    .then(onCheckWinner)
+  currentPlayer = currentPlayer === 'O' ? 'X' : 'O'
+}
 
+const onViewGamesPlayed = function (event) {
+  event.preventDefault()
+
+  api.viewGamesPlayed()
+    .then(ui.viewGamesPlayedSuccess)
+    .catch(ui.viewGamesPlayedFailure)
 
 }
-// const onGameOver = function (event) {
-//   if (cell-index[0].textContent === 'X' &&
-//       cell-index[1].textContent === 'X' &&
-//       cell-index[2].textContent === 'X'
-//   ) {alert('Winner')}
-//
-//   else if (
-//     cell-index[3].textContent === 'X' &&
-//       cell-index[4].textContent === 'X' &&
-//       cell-index[5].textContent === 'X'
-//   ) { alert('Winner')}
-//   else if (
-//     cell-index[6].textContent === 'X' &&
-//       cell-index[7].textContent === 'X' &&
-//       cell-index[8].textContent === 'X'
-//   ) { alert('Winner')}
-// }
-//
-// .then(ui.updateGameSuccess)
-// .catch(ui.updateGameFailure)
-
 
 
 
 module.exports = {
   onStartNewGame,
-  onBoxClick
-
+  onBoxClick,
+  onCheckWinner,
+  onPlayNewGame,
+  onViewGamesPlayed
 }

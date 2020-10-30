@@ -12,7 +12,7 @@ const signUpFailure = function(error) {
 }
 
 const signInSuccess = function(response) {
-  $("#message").text('Your token is ' + response.user.token)
+  $("#message").text('You are now signed in ' + response.user.email)
 
   store.user = response.user
   $('#change-password-form').show()

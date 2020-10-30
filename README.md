@@ -17,7 +17,7 @@ During the game I would like to highlight X or O depending on whose turn it is.
 I still need to add who won, loss, or tie when the game is over and to add a play
 again option when game is over. I am also missing a signed in user that can view
 the number of games played. For styling I want to add iamges and patterns
-eventhough it is not a requirement. 
+eventhough it is not a requirement.
 
 user stories:
 
@@ -28,3 +28,6 @@ As a user I want to click inside the box with an X or O
 As a user I want to see who won, loss, or if its a tie
 As a user I want to be able to see number of games played
 As a user I want to play a new game or sign out when a game is over
+
+wireframes: 
+https://imgur.com/a/Tm3tUX4

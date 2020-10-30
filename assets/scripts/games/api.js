@@ -38,8 +38,32 @@ const updateGame = function (data) {
   })
 }
 
+const playNewGame = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: data
+  })
+}
+
+const viewGamesPlayed = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/games/',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
   startNewGame,
-  updateGame
+  updateGame,
+  playNewGame,
+  viewGamesPlayed
 
 }
