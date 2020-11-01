@@ -11,14 +11,15 @@ const onStartNewGame = function (event) {
   const form = event.target
 
   const data = getFormFields(form)
-
-api.startNewGame(data)
+  currentPlayer = 'X'
+  api.startNewGame(data)
 
   .then(ui.startNewGameSuccess)
+  // .then(currentPlayer)
   .catch(ui.startNewGameFailure)
 }
 
-let currentPlayer = 'X'
+
 
 
 const onCheckWinner = function (event) {
@@ -71,47 +72,44 @@ const onCheckWinner = function (event) {
 
     $('#message').text('Player ' + store.game.cells[2] + ' wins!')
     // determine tie game
+  } else if (store.game.cells[0] !== '' && store.game.cells[1] !== '' && store.game.cells[2] !== '' && store.game.cells[3] !== '' && store.game.cells[4] !== '' && store.game.cells[5] !== '' && store.game.cells[6] !== '' && store.game.cells[7] !== '' && store.game.cells[8] !== '' ) {
 
-  } else if (store.game.cells[0] !== '' && store.game.cells[1] !== '' && store.game.cells[2] !== '' && store.game.cells[3] !== '' && store.game.cells[4] !== '' && store.game.cells[5] !== '' && store.game.cells[6] !== '' && store.game.cells[7] !== '' && store.game.cells[8] !== '' )
-
-      // store.game.over = true
-      $('#start-new-game').show()
-
-    $('#message').text('Tie game, start a new game!')
+  // store.game.over = true
+    $('#start-new-game').show()
+  $('#message').text('Tie game, start a new game!')
+}
 }
 
+let currentPlayer = 'X'
 
 
 
-
-const onPlayNewGame = function (event) {
-  event.preventDefault()
-
-
-  const form = event.target
-  const data = getFormFields(form)
-
-// clear board
-  // $('.box').text('')
-
-
-
-
-  api.playNewGame(data)
-    .then(ui.playNewGameSuccess)
-    .catch(ui.playNewGameFailure)
-}
+// const onPlayNewGame = function (event) {
+//   event.preventDefault()
+//
+//
+//   const form = event.target
+//   const data = getFormFields(form)
+//
+//   api.playNewGame(data)
+//     .then(ui.playNewGameSuccess)
+//     // .then({ store.player })
+//     .catch(ui.playNewGameFailure)
+// }
 
 const onBoxClick = function (event) {
   event.preventDefault()
 // prevent playing after someone wins
   if (store.game.over) {
+    $('#message').text('Game is over, start a new game!')
     return onBoxClick
   }
   // prevent changing x and o
   if ($(event.target).text() === 'X') {
+    $('#message').text('Invalid move, try again')
     return onBoxClick
   } else if ($(event.target).text() === 'O') {
+    $('#message').text('Invalid move, try again')
     return onBoxClick
   }
 
@@ -123,7 +121,7 @@ const onBoxClick = function (event) {
   const cellIndex = box.data('cell-index')
 
   // box.css('background', 'transparent').text(currentPlayer)
-  // box.css('pointer-events', 'none')
+
 
   const data = {
     game: {
@@ -139,7 +137,10 @@ api.updateGame(data)
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFailure)
     .then(onCheckWinner)
-  currentPlayer = currentPlayer === 'O' ? 'X' : 'O'
+
+
+  currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
+  $('#message').text("It's " + currentPlayer + "'s turn!")
 }
 
 
@@ -158,6 +159,6 @@ module.exports = {
   onStartNewGame,
   onBoxClick,
   onCheckWinner,
-  onPlayNewGame,
+  // onPlayNewGame,
   onViewGamesPlayed
 }

@@ -20,6 +20,8 @@ const signInSuccess = function(response) {
   $('#sign-up-form').hide()
   $('#sign-in-form').hide()
   $('#start-new-game').show()
+  $('h2').show()
+  $('#view-games-played').show()
 }
 
 const signInFailure = function (error) {

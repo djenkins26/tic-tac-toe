@@ -11,6 +11,12 @@ h1 {
   font-size: 60px;
 }
 
+#start-new-game {
+  text-align: center;
+  font-family: fantasy;
+  color: #00ffff;
+}
+
 h2 {
   text-align: center;
   font-family: fantasy;
@@ -61,21 +67,7 @@ h2 {
   background-color: #FA8072;
 }
 
-// .end-game {
-//   // display: none;
-//   width: 200px;
-//   top: 120px;
-//   background-color: white;
-//   position: absolute;
-//   left: 50%;
-//   margin-left: -100px;
-//   padding-top: 50px;
-//   padding-bottom: 50px;
-//   text-align: center;
-//   border-radius: 5px;
-//   color: black;
-//   font-size: 2em;
-// }
+
 
 #message {
   font-size: 30px;

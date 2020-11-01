@@ -2,27 +2,31 @@
 
 const store = require('./../store')
 
+
 const startNewGameSuccess = function (response) {
   store.game = response.game
-  store.player = 'X'
+  // store.player = 'X'
   $('#message').text('Player X goes first')
   $('#game-board').show()
   $('#game').show()
   $('#start-new-game').hide()
   $('.box').text('')
   $('#play-again').show()
+  $('h2').hide()
 }
 
 const startNewGameFailure = function (error) {
   $('#message').text('Start new game failed, try again')
 }
 
-let turn = false
+// let turn = false
 const updateGameSuccess = function (response) {
-  const player = turn ? 'X' : 'O'
   store.game = response.game
-  $('#message').text("It's " + player + "'s turn!")
-  return (turn = !turn)
+
+
+  // const player = turn ? 'X' : 'O'
+  // $('#message').text("It's " + player + "'s turn!")
+  // return (turn = !turn)
 
 }
 
@@ -34,7 +38,7 @@ const updateGameFailure = function (error) {
 
 const playNewGameSuccess = function (response) {
   store.game = response.game
-  store.player = 'X'
+  // store.player = 'X'
   $('#message').text('Start new game! Player X goes first')
   $('#game-board').show()
   $('#game').show()
