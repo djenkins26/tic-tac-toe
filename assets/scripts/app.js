@@ -16,10 +16,7 @@ $(() => {
   $('#sign-out-form').on('submit', events.onSignOut)
   $('#start-new-game').on('submit', gameEvents.onStartNewGame)
   $('.box').on('click', gameEvents.onBoxClick)
-
-  // $('#play-again').on('submit', gameEvents.onPlayNewGame)
   $('#view-games-played').on('submit', gameEvents.onViewGamesPlayed)
-
   $('#change-password-form').hide()
   $('#sign-out').hide()
   $('#start-new-game').hide()

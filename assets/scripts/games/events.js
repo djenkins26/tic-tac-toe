@@ -25,62 +25,74 @@ const onCheckWinner = function (event) {
   if (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[1] && store.game.cells[1] === store.game.cells[2]) {
 
     store.game.over = true
+    $('#start-new-game').show()
 
     $('#message').text('Player ' + store.game.cells[0] + ' wins!')
   } else if (store.game.cells[3] !== '' && store.game.cells[3] === store.game.cells[4] && store.game.cells[4] === store.game.cells[5]) {
 
     store.game.over = true
+    $('#start-new-game').show()
 
     $('#message').text('Player ' + store.game.cells[3] + ' wins!')
   } else if (store.game.cells[6] !== '' && store.game.cells[6] === store.game.cells[7] && store.game.cells[7] === store.game.cells[8]) {
 
     store.game.over = true
+    $('#start-new-game').show()
 
     $('#message').text('Player ' + store.game.cells[6] + ' wins!')
   } else if (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[3] && store.game.cells[3] === store.game.cells[6]) {
 
     store.game.over = true
+    $('#start-new-game').show()
 
     $('#message').text('Player ' + store.game.cells[0] + ' wins!')
   } else if (store.game.cells[1] !== '' && store.game.cells[1] === store.game.cells[4] && store.game.cells[4] === store.game.cells[7]) {
 
     store.game.over = true
+    $('#start-new-game').show()
 
     $('#message').text('Player ' + store.game.cells[1] + ' wins!')
   } else if (store.game.cells[2] !== '' && store.game.cells[2] === store.game.cells[5] && store.game.cells[5] === store.game.cells[8]) {
 
     store.game.over = true
+    $('#start-new-game').show()
 
     $('#message').text('Player ' + store.game.cells[2] + ' wins!')
   } else if (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[4] && store.game.cells[4] === store.game.cells[8]) {
 
     store.game.over = true
+    $('#start-new-game').show()
 
     $('#message').text('Player ' + store.game.cells[0] + ' wins!')
   } else if (store.game.cells[2] !== '' && store.game.cells[2] === store.game.cells[4] && store.game.cells[4] === store.game.cells[6]) {
 
     store.game.over = true
+    $('#start-new-game').show()
 
     $('#message').text('Player ' + store.game.cells[2] + ' wins!')
     // determine tie game
+
   } else if (store.game.cells[0] !== '' && store.game.cells[1] !== '' && store.game.cells[2] !== '' && store.game.cells[3] !== '' && store.game.cells[4] !== '' && store.game.cells[5] !== '' && store.game.cells[6] !== '' && store.game.cells[7] !== '' && store.game.cells[8] !== '' )
 
+      // store.game.over = true
+      $('#start-new-game').show()
 
-  $('#message').text('Tie game, start a new game!')
+    $('#message').text('Tie game, start a new game!')
 }
+
+
+
+
 
 const onPlayNewGame = function (event) {
   event.preventDefault()
 
-  if (!store.game.over) {
-
-  }
 
   const form = event.target
   const data = getFormFields(form)
 
 // clear board
-  $('.box').text('')
+  // $('.box').text('')
 
 
 
@@ -96,6 +108,12 @@ const onBoxClick = function (event) {
   if (store.game.over) {
     return onBoxClick
   }
+  // prevent changing x and o
+  if ($(event.target).text() === 'X') {
+    return onBoxClick
+  } else if ($(event.target).text() === 'O') {
+    return onBoxClick
+  }
 
 
 
@@ -104,8 +122,8 @@ const onBoxClick = function (event) {
   box.text(currentPlayer)
   const cellIndex = box.data('cell-index')
 
-  box.css('background', 'transparent').text(currentPlayer)
-  box.css('pointer-events', 'none')
+  // box.css('background', 'transparent').text(currentPlayer)
+  // box.css('pointer-events', 'none')
 
   const data = {
     game: {
@@ -123,6 +141,7 @@ api.updateGame(data)
     .then(onCheckWinner)
   currentPlayer = currentPlayer === 'O' ? 'X' : 'O'
 }
+
 
 const onViewGamesPlayed = function (event) {
   event.preventDefault()

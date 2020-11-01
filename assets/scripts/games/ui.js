@@ -9,7 +9,7 @@ const startNewGameSuccess = function (response) {
   $('#game-board').show()
   $('#game').show()
   $('#start-new-game').hide()
-  $('#player').show()
+  $('.box').text('')
   $('#play-again').show()
 }
 
@@ -39,8 +39,12 @@ const playNewGameSuccess = function (response) {
   $('#game-board').show()
   $('#game').show()
   $('#start-new-game').show()
-  $('#start-new-game').on('submit', gameEvents.onStartNewGame)
-  // $('#play-again').show()
+  $('.box').text('')
+
+
+  // box.css('background', 'transparent').text(currentPlayer)
+
+
 }
 const playNewGameFailure = function (error) {
   $('#message').text('Please try again')
