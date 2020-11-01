@@ -74,9 +74,9 @@ const onCheckWinner = function (event) {
     // determine tie game
   } else if (store.game.cells[0] !== '' && store.game.cells[1] !== '' && store.game.cells[2] !== '' && store.game.cells[3] !== '' && store.game.cells[4] !== '' && store.game.cells[5] !== '' && store.game.cells[6] !== '' && store.game.cells[7] !== '' && store.game.cells[8] !== '' ) {
 
-  // store.game.over = true
+    store.game.over = true
     $('#start-new-game').show()
-  $('#message').text('Tie game, start a new game!')
+    $('#message').text('Tie game, start a new game!')
 }
 }
 
