@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+
+    <body>
+
+      <h1>Tic Tac Toe: 3 in a row!</h1>
+      <p id="message"></p>
+
+      <section>
+        <form id="sign-in-form">
+          <fieldset>
+            <legend>Sign in to play!</legend>
+            <label for="sign-in-email">Email:</label>
+            <input id="sign-in-email" type="email" name="credentials[email]" placeholder="Email">
+
+            <label for="sign-in-password">Password:</label>
+            <input id="sign-in-password" type="password" name="credentials[password]" placeholder="Password">
+            <input type="submit" value="Sign in!">
+          </fieldset>
+        </form>
+      </section>
+
+
+
+      <section>
+        <form id="sign-up-form">
+          <fieldset>
+            <legend>Don't have an account? Sign up!</legend>
+            <label for"sign-up-email">Email:</label>
+            <input id="sign-up-email" type="email" name="credentials[email]" placeholder="Email">
+
+            <label for"sign-up-password">Password:</label>
+            <input id="sign-up-password" type="password" name="credentials[password]" placeholder="Password">
+
+            <label for="sign-up-password-confirmation">Password Confirmation:</label>
+            <input id="sign-up-password-confirmation" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+
+            <input type="submit" value="Sign up!"
+          </fieldset>
+        </form>
+      </section>
+
+      <section>
+        <form id="change-password-form">
+          <fieldset>
+            <legend>Change password</legend>
+            <input type="password" name="passwords[old]" placeholder="Old Password">
+            <input type="password" name="passwords[new]" placeholder="New Password">
+
+            <input type="submit" value="Change Password">
+          </fieldset>
+        </form>
+      </section>
+
+
+      <section>
+        <form id="sign-out">
+          <fieldset>
+            <legend>All done playing?</legend>
+            <label for="sign-out"></label>
+            <input type="submit" value="Sign-Out!">
+          </fieldset>
+        </form>
+      </section>
+
+<h2>Welcome! Ready to play?</h2>
+      <section>
+        <form id="start-new-game">
+          <label for="start-new-game"></label>
+          <input type="submit" value="Start New Game!">
+        </form>
+      </section>
+
+      <section>
+        <form id="view-games-played">
+          <legend>See how many games you played</legend>
+          <button>View Games Played</button>
+        </form>
+      </section>
+
+
+
+          <section class="container">
+            <form id="game">
+              <h1>Let's Play!</h1>
+
+            <div class="row h-100 board">
+
+              <div class="col-4 box" data-cell-index="0"></div>
+              <div class="col-4 box" data-cell-index="1"></div>
+              <div class="col-4 box" data-cell-index="2"></div>
+
+              <div class="col-4 box" data-cell-index="3"></div>
+              <div class="col-4 box" data-cell-index="4"></div>
+              <div class="col-4 box" data-cell-index="5"></div>
+
+              <div class="col-4 box" data-cell-index="6"></div>
+              <div class="col-4 box" data-cell-index="7"></div>
+              <div class="col-4 box" data-cell-index="8"></div>
+            </div>
+          </form>
+        </section>
+        </body>
+</html>
