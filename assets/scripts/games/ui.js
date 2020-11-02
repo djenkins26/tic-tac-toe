@@ -2,7 +2,6 @@
 
 const store = require('./../store')
 
-
 const startNewGameSuccess = function (response) {
   store.game = response.game
   // store.player = 'X'
@@ -19,15 +18,8 @@ const startNewGameFailure = function (error) {
   $('#message').text('Start new game failed, try again')
 }
 
-// let turn = false
 const updateGameSuccess = function (response) {
   store.game = response.game
-
-
-  // const player = turn ? 'X' : 'O'
-  // $('#message').text("It's " + player + "'s turn!")
-  // return (turn = !turn)
-
 }
 
 const updateGameFailure = function (error) {
@@ -44,11 +36,6 @@ const playNewGameSuccess = function (response) {
   $('#game').show()
   $('#start-new-game').show()
   $('.box').text('')
-
-
-  // box.css('background', 'transparent').text(currentPlayer)
-
-
 }
 const playNewGameFailure = function (error) {
   $('#message').text('Please try again')

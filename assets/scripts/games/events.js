@@ -14,13 +14,9 @@ const onStartNewGame = function (event) {
   currentPlayer = 'X'
   api.startNewGame(data)
 
-  .then(ui.startNewGameSuccess)
-  // .then(currentPlayer)
-  .catch(ui.startNewGameFailure)
+    .then(ui.startNewGameSuccess)
+    .catch(ui.startNewGameFailure)
 }
-
-
-
 
 const onCheckWinner = function (event) {
   if (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[1] && store.game.cells[1] === store.game.cells[2]) {
@@ -113,15 +109,9 @@ const onBoxClick = function (event) {
     return onBoxClick
   }
 
-
-
-
   const box = $(event.target)
   box.text(currentPlayer)
   const cellIndex = box.data('cell-index')
-
-  // box.css('background', 'transparent').text(currentPlayer)
-
 
   const data = {
     game: {
@@ -138,11 +128,9 @@ api.updateGame(data)
     .catch(ui.updateGameFailure)
     .then(onCheckWinner)
 
-
   currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
   $('#message').text("It's " + currentPlayer + "'s turn!")
 }
-
 
 const onViewGamesPlayed = function (event) {
   event.preventDefault()
@@ -150,10 +138,7 @@ const onViewGamesPlayed = function (event) {
   api.viewGamesPlayed()
     .then(ui.viewGamesPlayedSuccess)
     .catch(ui.viewGamesPlayedFailure)
-
 }
-
-
 
 module.exports = {
   onStartNewGame,

@@ -2,17 +2,17 @@
 
 const store = require('./../store')
 
-const signUpSuccess = function(response) {
-  $("#message").text('Thanks for signing up ' + response.user.email)
-
+const signUpSuccess = function (response) {
+  $('#message').text('Thanks for signing up ' + response.user.email)
+  $('#sign-up-form').trigger('reset')
 }
 
-const signUpFailure = function(error) {
-  $("#message").text('Sign up failed, try again')
+const signUpFailure = function (error) {
+  $('#message').text('Sign up failed, try again')
 }
 
-const signInSuccess = function(response) {
-  $("#message").text('You are now signed in ' + response.user.email)
+const signInSuccess = function (response) {
+  $('#message').text('You are now signed in ' + response.user.email)
 
   store.user = response.user
   $('#change-password-form').show()
@@ -29,15 +29,15 @@ const signInFailure = function (error) {
 }
 
 const onChangePasswordSuccess = function () {
-  $("#message").text('Changed password successfully')
+  $('#message').text('Changed password successfully')
 }
 
 const onChangePasswordFailure = function () {
-  $("#message").text('Changed password failed, try agin')
+  $('#message').text('Changed password failed, try agin')
 }
 
 const onSignOutSuccess = function () {
-  $("#message").text('Signed out successfully')
+  $('#message').text('Signed out successfully')
   store.user = null
   $('#change-password-form').hide()
   $('#sign-out-form').hide()
@@ -46,11 +46,8 @@ const onSignOutSuccess = function () {
 }
 
 const onSignoutFailure = function () {
-  $("#message").text('Sign out failed')
+  $('#message').text('Sign out failed')
 }
-
-
-
 
 module.exports = {
   signUpSuccess,

@@ -65,5 +65,4 @@ module.exports = {
   updateGame,
   playNewGame,
   viewGamesPlayed
-
 }
